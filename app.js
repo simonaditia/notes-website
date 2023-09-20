@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require("express")
 const expressLayout = require("express-ejs-layouts")
+const connectDB = require("./servers/config/db")
 const mainRoute = require("./servers/routes/index")
 const dashboardRoute = require("./servers/routes/dashboard")
 const app = express()
@@ -10,6 +11,9 @@ app.use(express.urlencoded({
     extended: true
 }))
 app.use(express.json())
+
+// Connect to Database
+connectDB()
 
 app.use(express.static("public"))
 app.use(expressLayout)

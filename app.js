@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require("express")
 const expressLayout = require("express-ejs-layouts")
+const methodOverride = require("method-override")
 const connectDB = require("./servers/config/db")
 const session = require('express-session')
 const passport = require('passport')
@@ -30,6 +31,8 @@ app.use(express.urlencoded({
     extended: true
 }))
 app.use(express.json())
+
+app.use(methodOverride("_method"))
 
 // Connect to Database
 connectDB()

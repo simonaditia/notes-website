@@ -202,9 +202,27 @@ const dashboardDeleteNote = async (req, res) => {
     }
 }
 
+const dashboardAddNote = async (req, res) => {
+    res.render("dashboard/add", {
+        layout: "../views/layouts/dashboard"
+    })
+}
+
+const dashboardAddNoteSubmit = async (req, res) => {
+    try {
+        req.body.user = req.user.id
+        await Note.create(req.body)
+        res.redirect("/dashboard")
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 module.exports = {
     dashboard,
     dashboardViewNote,
     dashboardUpdateNote,
-    dashboardDeleteNote
+    dashboardDeleteNote,
+    dashboardAddNote,
+    dashboardAddNoteSubmit
 }

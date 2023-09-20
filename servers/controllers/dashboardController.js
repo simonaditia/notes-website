@@ -189,8 +189,22 @@ const dashboardUpdateNote = async (req, res) => {
     }
 }
 
+const dashboardDeleteNote = async (req, res) => {
+    try {
+        await Note.deleteOne({
+            _id: req.params.id
+        }).where({
+            user: req.user.id
+        })
+        res.redirect("/dashboard")
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     dashboard,
     dashboardViewNote,
-    dashboardUpdateNote
+    dashboardUpdateNote,
+    dashboardDeleteNote
 }

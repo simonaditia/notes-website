@@ -2,7 +2,7 @@ const Note = require("../models/Notes")
 const mongoose = require("mongoose")
 
 const dashboard = async (req, res) => {
-    async function insertDumyCategoryData() {
+    /*async function insertDumyCategoryData() {
         try {
             await Note.insertMany([{
                     user: "650a89be7f41fdfee861ce90",
@@ -101,17 +101,26 @@ const dashboard = async (req, res) => {
         }
     }
 
-    insertDumyCategoryData()
+    insertDumyCategoryData()*/
 
     const locals = {
         title: "Dashboard",
         description: "Free write notes"
     }
-    res.render("dashboard/index", {
-        userName: req.user.firstName,
-        locals,
-        layout: "../views/layouts/dashboard"
-    })
+
+    try {
+        const notes = await Note.find({})
+        res.render("dashboard/index", {
+            userName: req.user.firstName,
+            locals,
+            notes,
+            layout: "../views/layouts/dashboard"
+        })
+    } catch (error) {
+        console.log(error)
+    }
+
+
 }
 
 module.exports = {

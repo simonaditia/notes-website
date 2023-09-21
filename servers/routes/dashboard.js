@@ -9,5 +9,7 @@ router.put("/item/:id", isLoggedIn, dashboardController.dashboardUpdateNote)
 router.delete("/item-delete/:id", isLoggedIn, dashboardController.dashboardDeleteNote)
 router.get("/add", isLoggedIn, dashboardController.dashboardAddNote)
 router.post("/add", isLoggedIn, dashboardController.dashboardAddNoteSubmit)
+router.get("/search", isLoggedIn, dashboardController.dashboardSearch)
+router.post("/search", isLoggedIn, dashboardController.dashboardSearchSubmit)
 
 module.exports = router

@@ -116,7 +116,7 @@ const dashboard = async (req, res) => {
 
         const notes = await Note.aggregate([{
                     $sort: {
-                        ceratedAt: -1
+                        updatedAt: -1
                     }
                 },
                 {
@@ -178,7 +178,8 @@ const dashboardUpdateNote = async (req, res) => {
             _id: req.params.id
         }, {
             title: req.body.title,
-            body: req.body.body
+            body: req.body.body,
+            updatedAt: Date.now()
         }).where({
             user: req.user.id
         })

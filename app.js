@@ -10,6 +10,7 @@ const authRoute = require('./servers/routes/auth')
 const mainRoute = require("./servers/routes/index")
 const dashboardRoute = require("./servers/routes/dashboard")
 const app = express()
+const path = require("path")
 const port = 3000 || process.env.PORT
 
 app.use(session({
@@ -39,6 +40,7 @@ connectDB()
 
 app.use(express.static(__dirname + "/public"))
 app.use(expressLayout)
+app.set("views", path.join(__dirname, "views"));
 app.set("layout", "./layouts/main")
 app.set("view engine", "ejs")
 

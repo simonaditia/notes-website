@@ -37,7 +37,7 @@ app.use(methodOverride("_method"))
 // Connect to Database
 connectDB()
 
-app.use(express.static("public"))
+app.use(express.static(__dirname + "/public"))
 app.use(expressLayout)
 app.set("layout", "./layouts/main")
 app.set("view engine", "ejs")
@@ -45,6 +45,9 @@ app.set("view engine", "ejs")
 app.use("/", mainRoute)
 app.use("/", authRoute)
 app.use("/dashboard", dashboardRoute)
+app.use("/ping", (req, res) => {
+    res.send("Pong!")
+})
 
 // Handle 404
 app.get("*", (req, res) => {

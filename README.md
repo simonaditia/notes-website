@@ -4,7 +4,7 @@ npm install
 ```
 
 ```bash
-node index.js
+npm run start
 ```
 
 ```bash

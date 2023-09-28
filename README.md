@@ -1,4 +1,15 @@
 # notes-website
+```bash
+npm install
+```
+
+```bash
+node index.js
+```
+
+```bash
+Node.js | Passport.js | MongoDB
+```
 
 ![pict5](https://github.com/simonaditia/notes-website/assets/61230651/6ef55e22-62fb-4ccf-90e8-39246140c510)
 
